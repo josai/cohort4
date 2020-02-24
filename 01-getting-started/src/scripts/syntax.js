@@ -24,5 +24,30 @@
 // lookup key to retrieve value
 
 const functions = {
+    isString: (str) => {
+        if ((typeof str) === 'string') {
+            return true;
+        } else {
+            return false
+        }
+    },
     
+    isNum: (num) => {
+        if ((typeof num) === 'number'){
+            return true
+        } else {
+            return false
+        }
+    },
+
+    isBool: (bool) => {
+        if ((typeof bool) === 'boolean'){
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
+
+export default functions;
