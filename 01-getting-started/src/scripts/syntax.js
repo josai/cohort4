@@ -24,16 +24,7 @@
 // lookup key to retrieve value
 
 const functions = {
-    // defines three functions that check the type of a variable.
-    // Returns true / false
-    isString: (str) => {
-        if ((typeof str) === 'string') {
-            return true;
-        } else {
-            return false
-        }
-    },
-    
+
     isNum: (num) => {
         if ((typeof num) === 'number'){
             return true
@@ -42,13 +33,50 @@ const functions = {
         }
     },
 
-    isBool: (bool) => {
-        if ((typeof bool) === 'boolean'){
-            return true
+    isString: (str) => {
+        // string
+        if ((typeof str) === 'string') {
+            return true;
         } else {
-            return false
+            return false;
         }
+    },
+
+    isBool: (bool) => {
+        // boolean
+        if ((typeof bool) === 'boolean'){
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    isArray: (a) => {
+        // array
+        return false;
+    },
+
+    isDict: (a) => {
+        return false;
+    },
+
+    isUndefined: (a) => {
+        return false;
+    },
+
+    addFront: (a, x) => {
+        return a;
+    },
+
+    addBack: (a, x) => {
+        return a
+    },
+
+    updateValue: (a, x) => {
+        return a;
     }
+
+
 
 }
 
