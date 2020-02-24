@@ -24,6 +24,8 @@
 // lookup key to retrieve value
 
 const functions = {
+    // defines three functions that check the type of a variable.
+    // Returns true / false
     isString: (str) => {
         if ((typeof str) === 'string') {
             return true;
