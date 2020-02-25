@@ -43,7 +43,6 @@ const functions = {
     },
 
     isBool: (bool) => {
-        // boolean
         if ((typeof bool) === 'boolean'){
             return true;
         } else {
@@ -51,32 +50,56 @@ const functions = {
         }
     },
 
-    isArray: (a) => {
-        // array
-        return false;
+    addArray: (a, x) => {
+        // add element to an array
+        a.push(x); // add to the front
+        const newA = [x].concat(a); // add to the end
+        return newA;
     },
 
-    isDict: (a) => {
-        return false;
+    addOneToArray: (a) => {
+        // for loop 
+        // for each element in the array add one
+        let newA = [];
+        for (let index = 0; index < a.length; index++) {
+            let element = a[index]  + 1;
+            newA.push(element);
+        }
+        return newA;
     },
 
     isUndefined: (a) => {
-        return false;
+        if ((typeof a) === 'undefined') {
+            return true;
+        } else {
+            return false;
+        };
     },
 
-    addFront: (a, x) => {
+    doWhile: (x, y) => {
+        // do while
+        do {
+            x = x + 1;
+        }
+        while (x < y);
+        return x;
+    },
+
+    addOne: (x, i, a) => {
+        a[i] = x + 1;
+    },
+
+    addToEach: (a) => {
+        // forEach (with array and function)
+        // adds one to each element in array
+        a.forEach(functions.addOne);
         return a;
     },
 
-    addBack: (a, x) => {
-        return a
-    },
-
-    updateValue: (a, x) => {
-        return a;
+    getDictItem: (d, key) => {
+        // lookup key to retrieve value
+        return d[key];
     }
-
-
 
 }
 
