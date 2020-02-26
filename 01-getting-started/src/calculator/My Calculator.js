@@ -13,14 +13,28 @@ const	calculator = {
 		return x;
 	},
 
+	doMath: (x, y, operator) => {
+		// Takes two numbers and a math operator[string] and returns the result
+		if (operator === '+') {
+			return x + y;
+		} else if (operator === '-') {
+			return x - y;
+		} else if (operator === '/') {
+			return x / y;
+		} else if (operator === '*') {
+			return x * y;
+		}
+	},
+
 	calculate: (a) => {
-		let sum = 0;
-		for (i = 0; i < a.length; i++) {
-			if ((typeof a[i]) != 'string') {
-				
+		let result = a[0];
+		for (let i = 1; i < a.length; i++) {
+		//	console.log(result);
+			if ((typeof a[i]) === 'string') {
+				result = calculator.doMath(result, a[i + 1], a[i]);
 			};
 		};
-		return (a);
+		return (result);
 	}
 }
 
