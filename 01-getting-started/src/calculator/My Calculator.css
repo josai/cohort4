@@ -1,0 +1,30 @@
+#calculatorBody {
+    position:absolute;
+    width: 312.5px;
+    height: 395px;
+    top:30%;
+    left:50%;
+    margin-top:-50px;   
+    margin-left:-100px;
+    background-color: #1d4b77;
+}
+
+#calculatorScreen {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 305px;
+    height: 75px;
+    background-color: #d75f2e;
+}
+
+.numButton {
+    float: left;
+    width: 75px;
+    height: 75px;
+    margin-top: 2px;
+    margin-left: 2px;
+    background-color: #f5c62a;
+}
