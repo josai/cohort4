@@ -13,6 +13,17 @@ const	calculator = {
 		return x;
 	},
 
+	parseInput: (a) => {
+		// conforms an input of math into a valid input for calculator functions.
+		if (typeof a[a.length - 1] === 'string' ) {
+			a = a.slice(0, a.length - 1);
+		} 
+		if (typeof a[0] === 'string'){
+			a = a.slice(1, a.length);
+		}
+		return a;
+	},
+
 	doMath: (x, y, operator) => {
 		// Takes two numbers and a math operator[string] and returns the result
 		if (operator === '+') {
@@ -27,9 +38,9 @@ const	calculator = {
 	},
 
 	calculate: (a) => {
+		a = calculator.parseInput(a);
 		let result = a[0];
 		for (let i = 1; i < a.length; i++) {
-		//	console.log(result);
 			if ((typeof a[i]) === 'string') {
 				result = calculator.doMath(result, a[i + 1], a[i]);
 			};
