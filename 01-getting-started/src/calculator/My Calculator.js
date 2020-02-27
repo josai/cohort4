@@ -1,5 +1,3 @@
-//console.log('hello world');
-
 
 function inputBox() {
 	let	text = document.getElementById('textbox').value;
@@ -7,25 +5,40 @@ function inputBox() {
 }
 
 const	calculator = {
+	mathList:[],
 
 	stringToNum: (s) => {
 		let x = parseInt(s);
 		return x;
 	},
 
-	parseInput: (a) => {
-		// conforms an input of math into a valid input for calculator functions.
-		if (typeof a[a.length - 1] === 'string' ) {
-			a = a.slice(0, a.length - 1);
-		} 
-		if (typeof a[0] === 'string'){
-			a = a.slice(1, a.length);
-		}
+	recurseBuildMath: (a) => {
+		// Composites individual elements of an array into a math expression using recursion.
+		if ((typeof a[0] === 'number') && (typeof a[1] === 'number')) {
+			let x = [parseInt(a[0].toString() + a[1].toString())];
+			return calculator.recurseBuildMath(x.concat(a.slice(2, a.length)));
+		} else if (typeof a[1] === 'string') {
+			let x = a.slice(0, 2);
+			x = x.concat(calculator.recurseBuildMath(a.slice(2, a.length)));
+			return x;
+		};
 		return a;
 	},
 
+	parseInput: (a) => {
+		// Makes user inputs safe for calculator functions.
+		if (typeof a[a.length - 1] === 'string' ) {
+			a = a.slice(0, a.length - 1);
+		};
+		if (typeof a[0] === 'string'){
+			a = a.slice(1, a.length);
+		};
+		
+		return calculator.recurseBuildMath(a);
+	},
+
 	doMath: (x, y, operator) => {
-		// Takes two numbers and a math operator[string] and returns the result
+		// Takes two numbers and a math operator[string] and returns the result.
 		if (operator === '+') {
 			return x + y;
 		} else if (operator === '-') {
@@ -37,17 +50,29 @@ const	calculator = {
 		}
 	},
 
-	calculate: (a) => {
-		a = calculator.parseInput(a);
+	calculate: () => {
+		a = calculator.parseInput(calculator.mathList);
+		console.log(a);
 		let result = a[0];
 		for (let i = 1; i < a.length; i++) {
 			if ((typeof a[i]) === 'string') {
 				result = calculator.doMath(result, a[i + 1], a[i]);
 			};
 		};
+		console.log(result);
+		calculator.mathList = [];
 		return (result);
+	},
+
+	addInput: (user_input)  => {
+		if (user_input[user_input.length - 1]) {
+			
+		}
+		calculator.mathList.push(user_input)
+		console.log(calculator.mathList);
+		return 0;
 	}
-}
+};
 
 function onButtonClicked() {
 	console.log("I'm in the button click event");
@@ -57,6 +82,16 @@ function onButtonClicked() {
 	console.log('10' + 10)
 }
 
-//document.getElementById('mybutton').addEventListener('click', onButtonClicked);
+let calc = calculator;
 
-export default calculator;
+
+
+//document.getElementById('one').addEventListener('click', c.addInput(1));
+//document.getElement
+//var but = document.getElementById('one');
+//but.addEventListener('onclick', console.log('you did it!'));
+
+
+
+
+//export default calculator;

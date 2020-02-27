@@ -20,6 +20,10 @@
     background-color: #d75f2e;
 }
 
+button {
+    all: unset;
+}
+
 .numButton {
     float: left;
     width: 75px;
@@ -27,4 +31,13 @@
     margin-top: 2px;
     margin-left: 2px;
     background-color: #f5c62a;
+ 
+}
+
+.numButton:hover {
+    background-color: #ea06b1;
+}
+
+.numButton:active {
+    background-color: #000000;
 }

@@ -8,26 +8,27 @@
 <input type="text" id='textbox'><br>
 <button type='button'id='mybutton'>Calculate</button>
 
-<script src="My Calculator.js"></script>
+
 <body>
 	<div id=calculatorBody>
 		<div id=calculatorScreen></div>
+		<button class='numButton' id='one' onclick="calc.addInput(1)">1</button>
+		<button class='numButton' id='two' onclick="calc.addInput(2)">2</button>
+		<button class='numButton' id='three' onclick="calc.addInput(3)">3</button>
+		<button class='numButton' id='plus' onclick="calc.addInput('+')">+</button>
+		<button class='numButton' id='four' onclick="calc.addInput(4)">4</button>
+		<button class='numButton' id='five' onclick="calc.addInput(5)">5</button>
+		<button class='numButton' id='six' onclick="calc.addInput(6)">6</button>
+		<button class='numButton' id='minus' onclick="calc.addInput('-')">-</button>
+		<button class='numButton' id='seven' onclick="calc.addInput(7)">7</button>
+		<button class='numButton' id='eight' onclick="calc.addInput(8)">8</button>
+		<button class='numButton' id='nine' onclick="calc.addInput(9)">9</button>
+		<button class='numButton' id='mult' onclick="calc.addInput('*')">X</button>
 		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
-		<div class='numButton'></div>
+		<button class='numButton' id='zero' onclick="calc.addInput(0)">0</button>
+		<button class='numButton' id='equal' onclick="calc.calculate()">=</button>
+		<button class='numButton' id='divide' onclick="calc.addInput('/')">/</button>
 	</div>
 </body>
 </html>
+<script src="My Calculator.js"></script>
