@@ -12,7 +12,7 @@ const	calculator = {
 		return x;
 	},
 
-	recurseBuildMath: (a) => {
+	recurseBuildMath: (a) => { // TODO: rename param
 		// Composites individual elements of an array into a math expression using recursion.
 		if ((typeof a[0] === 'number') && (typeof a[1] === 'number')) {
 			let x = [parseInt(a[0].toString() + a[1].toString())];
@@ -25,7 +25,7 @@ const	calculator = {
 		return a;
 	},
 
-	parseInput: (a) => {
+	parseInput: (a) => { // names
 		// Makes user inputs safe for calculator functions.
 		if (typeof a[a.length - 1] === 'string' ) {
 			a = a.slice(0, a.length - 1);
@@ -37,7 +37,7 @@ const	calculator = {
 		return calculator.recurseBuildMath(a);
 	},
 
-	doMath: (x, y, operator) => {
+	doArithmetic: (x, y, operator) => { // fix name
 		// Takes two numbers and a math operator[string] and returns the result.
 		if (operator === '+') {
 			return x + y;
@@ -50,17 +50,19 @@ const	calculator = {
 		}
 	},
 
-	calculate: () => {
-		a = calculator.parseInput(calculator.mathList);
+	calculate: (a) => {
+		//a = calculator.parseInput(calculator.mathList);
+		a = calculator.parseInput(a);
 		console.log(a);
 		let result = a[0];
 		for (let i = 1; i < a.length; i++) {
 			if ((typeof a[i]) === 'string') {
-				result = calculator.doMath(result, a[i + 1], a[i]);
+				result = calculator.doArithmetic(result, a[i + 1], a[i]);
 			};
 		};
 		console.log(result);
 		calculator.mathList = [];
+		numToMathList(result);
 		return (result);
 	},
 
@@ -70,17 +72,22 @@ const	calculator = {
 		}
 		calculator.mathList.push(user_input)
 		console.log(calculator.mathList);
+	
 		return 0;
-	}
-};
+	},
 
-function onButtonClicked() {
-	console.log("I'm in the button click event");
-	let number = parseInt(inputBox(), 10);
-	let	num_size = 'The size of your input number is ' + size(number);
-	console.log(num_size);
-	console.log('10' + 10)
-}
+	clearInput: () => {
+		calculator.mathList = [];
+	},
+
+	numToMathList: (x) => {
+		calculator.clearInput();
+		x = x.toString().split();
+
+		
+	}
+
+};
 
 let calc = calculator;
 
@@ -94,4 +101,4 @@ let calc = calculator;
 
 
 
-//export default calculator;
+export default calculator;
