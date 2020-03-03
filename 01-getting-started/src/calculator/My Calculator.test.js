@@ -28,3 +28,5 @@ test('Check calculator.calculate', () => {
     expect(calculator.calculate([2, 9, 8, 3, 4, '*', 3, 2, 9, 4, 0, '+', 2])).toBe(29834 * 32940 + 2);
 });
 
+
+

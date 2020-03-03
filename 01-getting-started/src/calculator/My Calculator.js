@@ -5,7 +5,7 @@ function inputBox() {
 }
 
 const	calculator = {
-	mathList:[],
+	mathList:[0],
 
 	stringToNum: (s) => {
 		let x = parseInt(s);
@@ -70,39 +70,39 @@ const	calculator = {
 	updateScreen: (numbers) => {
 		document.getElementById('calculatorScreen').innerHTML = ""; // clear screen
 		let screenDiv = document.getElementById('calculatorScreen');
+		console.log(numbers)
 		let text = numbers.toString();
 		let content = document.createTextNode(text);
 		screenDiv.appendChild(content);
 	},
 
 	addInput: (user_input)  => {
-		if (user_input[user_input.length - 1]) {
-			
+		if (calculator.mathList[0] === 0) {
+			calculator.mathList = [user_input];
+		} else {
+			calculator.mathList.push(user_input)
 		}
-		calculator.mathList.push(user_input)
 		console.log(calculator.mathList);
 		calculator.updateScreen(calculator.mathList);
 		return 0;
 	},
 
 	clearInput: () => {
-		calculator.mathList = [];
-		calculator.updateScreen([]);
+		calculator.mathList = [0];
+		calculator.updateScreen(calculator.mathList);
 	},
 
 	numToMathList: (x) => {
 		calculator.clearInput();
 		x = x.toString().split();
 		x = x.map(Number);
-		console.log('heerrre');
-		console.log(x)
 		calculator.mathList = x;
 	}
 
 };
 
 let calc = calculator;
-
+calc.updateScreen(calc.mathList);
 
 
 //document.getElementById('one').addEventListener('click', c.addInput(1));
