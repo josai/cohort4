@@ -7,31 +7,36 @@ function inputBox() {
 
 const	taxCalculator = {
     
-    crunchNumbers: (x) => {
-        let net = x;
+    crunchNumbers: (income, bracket, taxPercent) => {
         let remainder = 0;
-        if (x > 214368) {
-            remainder = (x - 214368) * 0.66;
-            x = x - (x - 214368);
+        if (income > bracket) {
+            remainder = (income - bracket) * (1 - taxPercent);
+            income = income - (income - bracket);
         }
-        if (x > 150473) {
-            remainder = remainder + ((x - 150473) * 0.71);
-            x = x - (x - 150473);
-        }
-        if (x > 53404) {
-            remainder = remainder + ((x - 53404) * 0.74);
-            x = x - (x - 53404);
-        }
-        if (x > 48534) {
-            remainder = remainder + ((x - 48534) * 0.795);
-            x = x - (x - 48534);
-        }
-        remainder = net - (remainder + (x * 0.85));
-        return parseFloat(remainder.toFixed(8));
+        return income;
     },
 
     calculate: (income) => {
-        return taxCalculator.crunchNumbers(income);
+        let net = income;
+        let remainder = 0;
+        if (income > 214368) {
+            remainder = (income - 214368) * (1 - 0.33);
+            income = income - (income - 214368);
+        }
+        if (income > 150473) {
+            remainder = remainder + ((income - 150473) * (1 - 0.29));
+            income = income - (income - 150473);
+        }
+        if (income > 53404) {
+            remainder = remainder + ((income - 53404) * (1 - 0.26));
+            income = income - (income - 53404);
+        }
+        if (income > 48534) {
+            remainder = remainder + ((income - 48534) * (1 - 0.205));
+            income = income - (income - 48534);
+        }
+        remainder = net - (remainder + (income * (1 - 0.15)));
+        return parseFloat(remainder);
     }
 }
 
